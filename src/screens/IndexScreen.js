@@ -6,6 +6,7 @@ const IndexScreen = () => {
     <View>
       <Text>Index Screen</Text>
       <Text>This is a second line</Text>
+      <Text>Hello</Text>
     </View>
   );
 };
