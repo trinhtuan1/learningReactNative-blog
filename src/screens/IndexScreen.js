@@ -4,7 +4,7 @@ import { Context as BlogContext } from '../context/BlogContext';
 import { FontAwesome } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const IndexScreen = () => {
+const IndexScreen = ({ navigation }) => {
   const { state, addBlogPost, deleteBlogPost } = React.useContext(BlogContext);
   
   return (
@@ -18,14 +18,18 @@ const IndexScreen = () => {
         keyExtractor={post => `${post.id}`}
         renderItem={({ item }) => {
           return (
-            <View style={styles.row}>
-              <Text style={styles.title}>{item.title} - {item.id}</Text>
-              <TouchableOpacity
-                onPress={() => deleteBlogPost(item.id)}
-              >
-                <FontAwesome style={styles.icon} name="trash-o" />
-              </TouchableOpacity>
-            </View>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Show', { id: item.id })}
+            >
+              <View style={styles.row}>
+                <Text style={styles.title}>{item.title} - {item.id}</Text>
+                <TouchableOpacity
+                  onPress={() => deleteBlogPost(item.id)}
+                >
+                  <FontAwesome style={styles.icon} name="trash-o" />
+                </TouchableOpacity>
+              </View>
+            </TouchableOpacity>
           )
         }}
       />
