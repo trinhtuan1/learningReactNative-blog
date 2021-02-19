@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, FlatList, Button } from 'react-native';
 import { Context as BlogContext } from '../context/BlogContext';
 import { FontAwesome } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const IndexScreen = () => {
   const { state, addBlogPost } = React.useContext(BlogContext);
@@ -18,8 +19,12 @@ const IndexScreen = () => {
         renderItem={({ item }) => {
           return (
             <View style={styles.row}>
-              <Text style={styles.title}>{item.title}</Text>
-              <FontAwesome style={styles.icon} name="trash-o" />
+              <Text style={styles.title}>{item.title} - {item.id}</Text>
+              <TouchableOpacity
+                onPress={() => console.log(item.id)}
+              >
+                <FontAwesome style={styles.icon} name="trash-o" />
+              </TouchableOpacity>
             </View>
           )
         }}
