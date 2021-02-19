@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, FlatList, Button } from 'react-native';
 import { Context as BlogContext } from '../context/BlogContext';
 import { FontAwesome } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Feather } from '@expo/vector-icons';
 
 const IndexScreen = ({ navigation }) => {
   const { state, addBlogPost, deleteBlogPost } = React.useContext(BlogContext);
@@ -35,6 +36,18 @@ const IndexScreen = ({ navigation }) => {
       />
     </View>
   )
+};
+
+IndexScreen.navigationOptions = ({ navigation }) => {
+  return {
+    headerRight: () => (
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Create')}
+      >
+        <Feather name="plus" size={30} />
+      </TouchableOpacity>
+    )
+  };
 };
 
 const styles = StyleSheet.create({
