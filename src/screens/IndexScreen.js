@@ -5,7 +5,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const IndexScreen = () => {
-  const { state, addBlogPost } = React.useContext(BlogContext);
+  const { state, addBlogPost, deleteBlogPost } = React.useContext(BlogContext);
   
   return (
     <View>
@@ -15,13 +15,13 @@ const IndexScreen = () => {
       />
       <FlatList
         data={state}
-        keyExtractor={post => post.title}
+        keyExtractor={post => `${post.id}`}
         renderItem={({ item }) => {
           return (
             <View style={styles.row}>
               <Text style={styles.title}>{item.title} - {item.id}</Text>
               <TouchableOpacity
-                onPress={() => console.log(item.id)}
+                onPress={() => deleteBlogPost(item.id)}
               >
                 <FontAwesome style={styles.icon} name="trash-o" />
               </TouchableOpacity>
