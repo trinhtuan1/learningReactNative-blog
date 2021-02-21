@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
+import BlogPostForm from '../components/BlogPostForm';
 import { Context as BlogContext } from '../context/BlogContext';
 
 const EditScreen = ({ navigation }) => {
@@ -12,13 +13,7 @@ const EditScreen = ({ navigation }) => {
   const [ title, setTitle ] = React.useState(blogPost.title);
 
   return (
-    <View>
-      <Text>Edit Screen</Text>
-      <TextInput
-        value={title}
-        onChangeText={newTitle => setTitle(newTitle)}
-      />
-    </View>
+    <BlogPostForm /> 
   );
 };
 
