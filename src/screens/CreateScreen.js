@@ -6,7 +6,14 @@ import { Context as BlogContext } from '../context/BlogContext';
 const CreateScreen = ({ navigation }) => {
   const { addBlogPost } = React.useContext(BlogContext);
   return (
-    <BlogPostForm />
+    <BlogPostForm 
+      onSubmit={(title, content) => {
+        addBlogPost(title, content, () => {
+          navigation.navigate('Index');
+        });
+      }}
+    />
+
   )
   
 };
