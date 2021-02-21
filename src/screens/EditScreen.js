@@ -10,10 +10,13 @@ const EditScreen = ({ navigation }) => {
     blogPost.id === navigation.getParam('id')
   ));
 
-  const [ title, setTitle ] = React.useState(blogPost.title);
-
   return (
-    <BlogPostForm /> 
+    <BlogPostForm 
+      initialValues={blogPost}
+      onSubmit={(title, content) => {
+        console.log(title, content);
+      }}
+    /> 
   );
 };
 
